@@ -1,19 +1,7 @@
 # Generate Terraform file from Gandi DNS records
 
-[![Pypi version](https://img.shields.io/pypi/v/gandi-2-terraform?color=blue)](https://pypi.org/project/gandi-2-terraform/)
-[![Python versions](https://img.shields.io/pypi/pyversions/gandi-2-terraform.svg)](https://pypi.org/project/gandi-2-terraform/)
-[![Build status](https://github.com/marcaurele/gandi-2-terraform/workflows/Build%20status/badge.svg)](https://github.com/marcaurele/gandi-2-terraform/actions)
-
-
 This tool aims to simplify managing DNS recods using Terrafom by making the initial import through a single operation.
 It fetches DNS records from one or multiple domains you own with [Gandi.net](https://gandi.et) and generates TF files with the corresponding records' resources using `gandi_livedns_record` and defining each record in a set (see the example output). It will output all the `terraform import` command to execute for the records.
-
-## Install
-
-```console
-$ pip install gandi-2-terraform
-$ gandi2tf --help
-```
 
 ### Usage
 
@@ -26,19 +14,19 @@ $ export GANDI_KEY=A1b2C3d4E5f6
 When no argument is given, it will fetch all available domains for the given API key:
 
 ```console
-$ gandi-2tf
+$ python gandi_tf/main.py
 ```
 
 Or it can generate the tf configuration file for a single domain:
 
 ```console
-$ gandi-2tf example.com
+$  python gandi_tf/main.py example.com
 ```
 
 Fetching the domains only owned by a single organization:
 
 ```console
-$ gandi-2tf --organization-id 04303337-a1b0-4b96-8bd7-992005a072e9
+$  python gandi_tf/main.py --organization-id 04303337-a1b0-4b96-8bd7-992005a072e9
 ```
 
 ### Options
@@ -54,7 +42,7 @@ In order to access the DNS records through the API, you have to provide your API
 
 ```console
 $ export GANDI_KEY=A1b2C3d4E5f6
-$ gandi-2tf example.com
+$  python gandi_tf/main.py example.com
 ```
 
 will generate a file `example.com.tf` containing:
